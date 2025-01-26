@@ -1,10 +1,7 @@
- <div align="justify"> 
-# **Ejercicio 1 **
-** Nombre del SGBD**| **Tipo** | **Modelo de datos** | **Características principales** | Ventajas | Limitaciones | Casos de Uso
-    ---|---|---|---|---|---|---
-  Access| Relacional| Tablas Relacionales|Integración con Microsoft Office, macros, interfaz amigable| Fácil de usar, bajo costo Escalabilidad limitada, solo para Windows|Base de datos pequeñas, prototipos
-  CouchDB| 
-  DEX| 
-  BigQuery|
-  Redis|
-</div>
+| **Nombre del SGBD** | **Tipo**             | **Modelo de datos**       | **Características principales**                                              | **Ventajas**                                     | **Limitaciones**                                    | **Casos de uso**                                 |
+|----------------------|---------------------|---------------------------|------------------------------------------------------------------------------|-------------------------------------------------|---------------------------------------------------|-------------------------------------------------|
+| **Access**           | Relacional         | Tablas relacionales       | Integración con Microsoft Office, macros, interfaz amigable                  | Fácil de usar, bajo costo                       | Escalabilidad limitada, solo para Windows         | Bases de datos pequeñas, prototipos             |
+| **DEX**              | Grafos             | Nodos y aristas           | Optimizado para relaciones complejas, consultas rápidas                      | Eficiente para datos conectados, escalable      | No apto para datos tabulares                     | Redes sociales, sistemas de recomendación       |
+| **Google Cloud**     | Relacional distribuido | Tablas relacionales       | Totalmente gestionado, consultas SQL estándar, integración con Google Cloud  | Escalable, análisis en tiempo real              | Costos impredecibles, no apto para transacciones  | Data warehouses, big data, visualización        |
+| **CouchDB**          | Orientado a documentos | Documentos JSON           | Replicación robusta, acceso RESTful, diseño offline-first                    | Ideal para aplicaciones distribuidas            | No apto para relaciones complejas                | Apps móviles, bases de datos semi-estructuradas |
+| **Redis**            | En memoria (NoSQL) | Clave-valor y estructuras | Almacenamiento en memoria, soporte para pub/sub y múltiples estructuras       | Ultrarápido, versátil                           | Limitado por RAM, persistencia básica            | Cachés, analítica en tiempo real, mensajería    |
