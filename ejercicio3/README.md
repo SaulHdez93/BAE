@@ -1,10 +1,10 @@
 <div align="justify">
 
-#Ejercicio 4
+# Ejercicio 4
 
-##Modelo Entidad/Relación LFP 
+## Modelo Entidad/Relación LFP 
 
-###Enunciado
+### Enunciado
 
 La liga de fútbol profesional ha decidido informatizar sus instalaciones creando una base de datos para guardar la información de los partidos que se juegan en la liga.
 
@@ -20,9 +20,9 @@ Por último se quiere almacenar, en la base de datos, los datos de los president
 
 <img src="images/tarea4.drawio.png">
 
-##Modelo Relacional  LFP
+## Modelo Relacional  LFP
 
-###Enunciado
+### Enunciado
 
 La liga de fútbol profesional ha decidido informatizar sus instalaciones creando una base de datos para guardar la información de los partidos que se juegan en la liga.
 
@@ -40,9 +40,9 @@ Diseña elmodelo entidad-relación resultante al modelo relacional a través de 
 
 <img src="images/tarea4_1.drawio.png">
 
-#Ejercicio 5
+# Ejercicio 5
 
-###Enunciado
+### Enunciado
 
 Una empresa necesita organizar la siguiente información referente a su organización interna.
 La empresa está organizada en una serie de departamentos. Cada departamento tiene un
@@ -63,11 +63,11 @@ uno o más departamentos.
 poseída por empleados diferentes.
 - Un centro de trabajo es dirigido por un empleado. Un mismo empleado puede
 
-##Modelo Entidad/Relación Empresa
+## Modelo Entidad/Relación Empresa
 
 <img src="images/tarea4_2.drawio.png">
 
-##Modelo Relacional Empresa
+## Modelo Relacional Empresa
 
 <img src="images/tarea 4_2_2.drawio.png">
 
