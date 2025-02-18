@@ -35,7 +35,7 @@ Ahora cada tabla tiene valores atómicos y filas únicas.
 
 2. Aplicar **2FN**, asegurando que cada campo dependa completamente de la clave primaria.
 
-En este caso al realizar la **1FN**, nos damso cuenta que ya hemos divido en dos la tabla y por lo tanto estas dos tablas complen la **2FN**, porque esta norma nos dice que debemso asegurar que todas las tablas ya estén en **1FN** y que todos los atributos no primario dependan completamente de la clave primaria **PK**.
+En este caso al realizar la **1FN**, nos damos cuenta que ya hemos divido en dos la tabla y por lo tanto estas dos tablas complen la **2FN**, porque esta norma nos dice que debemso asegurar que todas las tablas ya estén en **1FN** y que todos los atributos no primario dependan completamente de la clave primaria **PK**.
 
 **Modelo E/R resultante**
 
@@ -241,3 +241,182 @@ En este caso al realizar la **2FN**, La clave primaria es una combinación de ID
 **Modelo E/R resultante**
 
 <img src="images/ejercicio5.drawio.png">
+
+## Ejercicio 6: Venta de Tiendas
+
+### **Tabla Inicial: Ventas**
+
+| ID_Venta | Cliente    | Productos Comprados | Total |
+|----------|------------|---------------------|-------|
+| 8001     | Juan P.   | Celular, Funda      | 500   |
+| 8002     | Andrea M. | Laptop              | 1000  |
+
+### **Tareas:**
+
+1. Aplicar **1FN**, eliminando los valores multivaluados en "Proveedores".
+
+Al aplicar la  **1FN**, procedemos a atomizar los valores de todas las columnas y que todas las filas son únicas, por esto dividimos en dos las tablas:
+
+#### **Tabla de Venta-Producto**
+
+ ID_Venta | Productos Comprados |
+|----------|--------------------|
+| 8001     |  Celular           |
+| 8001     |  Funda             |
+| 8002     | Laptop             | 
+
+#### **Tabla de Venta-Información**
+| ID_Venta | Cliente   | Total  |
+|----------|-----------|--------|
+| 8001     | Juan P.   |  500   |
+| 8002     | Andrea M. |  1000  |
+
+
+Ahora cada tabla tiene valores atómicos y filas únicas. En este caso la tablá ya era atómica pero dividimos la tabla en dos para que cumpla con las normas del **1FN**.
+
+2. Aplicar **2FN**, asegurando que cada campo dependa completamente de la clave primaria.
+
+En este caso al realizar la **1FN**, nos damos cuenta que ya hemos divido en dos la tabla y por lo tanto estas dos tablas complen la **2FN**, porque esta norma nos dice que debemso asegurar que todas las tablas ya estén en **1FN** y que todos los atributos no primario dependan completamente de la clave primaria **PK**.
+
+**Modelo E/R resultante**
+
+<img src="images/ejercicio6.drawio.png">
+
+## Ejercicio 7: Biblioteca de Libros
+
+### **Tabla Inicial: Libros**
+
+| ID_Libro | Título | Autores          | Género  |
+|----------|--------|-----------------|---------|
+| 101      | El Quijote | Cervantes   | Novela  |
+| 102      | 1984       | Orwell       | Ciencia Ficción |
+
+### **Tareas:**
+
+1. Aplicar **1FN**, eliminando los valores multivaluados en "Proveedores".
+
+Al aplicar la  **1FN**, procedemos a atomizar los valores de todas las columnas y que todas las filas son únicas, por esto dividimos en dos las tablas:
+
+
+#### **Tabla de Libros**
+
+| ID_Libro | Título | Autores          | Género  |
+|----------|--------|-----------------|---------|
+| 101      | El Quijote | Cervantes   | Novela  |
+| 102      | 1984       | Orwell       | Ciencia Ficción |
+
+
+Ahora cada tabla tiene valores atómicos y filas únicas. En este caso la tablá ya era atómica pero dividimos la tabla en dos para que cumpla con las normas del **1FN**.
+
+2. Aplicar **2FN**, asegurando que cada campo dependa completamente de la clave primaria.
+
+En este caso al realizar la **1FN**, nos damos cuenta que ya hemos divido en dos la tabla y por lo tanto estas dos tablas complen la **2FN**, porque esta norma nos dice que debemso asegurar que todas las tablas ya estén en **1FN** y que todos los atributos no primario dependan completamente de la clave primaria **PK**.
+
+**Modelo E/R resultante**
+
+<img src="images/ejercicio7.drawio.png">
+
+## Ejercicio 8: Facturación de servicio
+
+### **Tabla Inicial: Facturas**
+
+| ID_Factura | Cliente   | Servicios Contratados | Costo Total |
+|------------|-----------|-----------------------|-------------|
+| 9001       | Juan P.   | Internet, TV          | 50          |
+| 9002       | Ana M.    | Teléfono              | 20          |
+
+### **Tareas:**
+
+1. Aplicar **1FN**, eliminando los valores multivaluados en "Proveedores".
+
+Al aplicar la  **1FN**, procedemos a atomizar los valores de todas las columnas y que todas las filas son únicas, por esto dividimos en dos las tablas:
+
+
+#### **Tabla de Facturas**
+
+
+| ID_Factura | Cliente   | Servicios Contratados | Costo Total |
+|------------|-----------|-----------------------|-------------|
+| 9001       | Juan P.   | Internet              | 50          |
+| 9001       | Juan P.   |  TV                   | 50          |
+| 9002       | Ana M.    | Teléfono              | 20          |
+
+
+Ahora cada tabla tiene valores atómicos y filas únicas. En este caso la tablá ya era atómica pero dividimos la tabla en dos para que cumpla con las normas del **1FN**.
+
+2. Aplicar **2FN**, asegurando que cada campo dependa completamente de la clave primaria.
+
+Separamos las tablas en dos devido a que las dependencias por un lado una tabla de Servicio y una tabla de detalles de la factura.
+
+
+#### **Tabla de Servicios**
+
+| ID_Factura | Servicio  |
+|------------|-----------|
+| 9001       | Internet  |
+| 9001       | TV        |
+| 9002       | Teléfono  |
+
+#### **Tabla de Detalles de la Factura**
+
+| ID_Factura | Cliente   | Costo |
+|------------|-----------|-------|
+| 9001       | Juan P.   | 50    |
+| 9002       | Ana M.    | 20    |
+
+**Modelo E/R resultante**
+
+<img src="images/ejercicio8.drawio.png">
+
+## Ejercicio 10: Gestión de Proyectos
+
+### **Tabla Inicial: Proyectos**
+
+| ID_Proyecto | Nombre       | Miembros        | Presupuesto |
+|------------|-------------|----------------|------------|
+| 7001       | Web App     | Juan, Ana      | 5000       |
+| 7002       | E-commerce  | Pedro, María   | 10000      |
+
+### **Tareas:**
+
+1. Aplicar **1FN**, eliminando los valores multivaluados en "Proveedores".
+
+Al aplicar la  **1FN**, procedemos a atomizar los valores de todas las columnas y que todas las filas son únicas, por esto dividimos en dos las tablas:
+
+#### **Tabla de Proyecto**
+
+| ID_Proyecto | Nombre     | Miembros | Presupuesto|
+|------------|-------------|----------|------------|
+| 7001       | Web App     | Juan     | 5000       |
+| 7001       | Web App     | Ana      | 5000       |
+| 7002       | E-commerce  | Pedro    | 10000      |
+| 7002       | E-commerce  | María    | 10000      |
+
+
+Ahora cada tabla tiene valores atómicos y filas únicas. En este caso la tablá ya era atómica pero dividimos la tabla en dos para que cumpla con las normas del **1FN**.
+
+2. Aplicar **2FN**, asegurando que cada campo dependa completamente de la clave primaria.
+
+Separamos las tablas en dos debido a que las dependencias por un lado una tabla de Miembors y una tabla de detalles del proyecto.
+
+#### **Tabla de Miembros**
+
+| ID_Proyecto | Miembro  |
+|-------------|----------|
+| 7001        | Juan     |
+| 7001        | Ana      |
+| 7002        | Pedro    |
+| 7002        | María    |
+
+#### **Tabla de Detalles del Proyecto**
+
+| ID_Proyecto | Nombre       | Presupuesto |
+|-------------|--------------|-------------|
+| 7001        | Web App      | 5000        |
+| 7002        | E-commerce   | 10000       |
+
+
+**Modelo E/R resultante**
+
+<img src="images/ejercicio9.drawio.png">
+
