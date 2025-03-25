@@ -1,8 +1,10 @@
--- Selección de libros cuyo título comienza con "H".
+### Selección de libros cuyo título comienza con "H".
+```sql
 sqlite> SELECT * FROM libro WHERE titulo regexp 'H%';
 sqlite>
-No hiciste ningún titulo que empiece con al letra H
--- Libros escritos por autores cuyos nombres terminan con "ing".
+```
+### Libros escritos por autores cuyos nombres terminan con "ing".
+```sql
 sqlite> SELECT a.* FROM autor AS a WHERE a.nombre REGEXP 'ing$';
 +----+--------------+
 | id |    nombre    |
@@ -10,7 +12,10 @@ sqlite> SELECT a.* FROM autor AS a WHERE a.nombre REGEXP 'ing$';
 | 1  | J.K. Rowling |
 | 2  | Stephen King |
 +----+--------------+ 
--- Libros con títulos que contienen la palabra "and" en cualquier posición.
+```
+
+### Libros con títulos que contienen la palabra "and" en cualquier posición.
+```sql
 sqlite> SELECT titulo FROM libro WHERE titulo REGEXP 'and';
 +----------------------------------+
 |              titulo              |
@@ -20,7 +25,9 @@ sqlite> SELECT titulo FROM libro WHERE titulo REGEXP 'and';
 | War and Peace                    |
 | Crime and Punishment             |
 +----------------------------------+
--- Libros cuyo título comienza con una vocal.
+```
+### Libros cuyo título comienza con una vocal.
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '^[AEIOUaeiou]';
 +--------+----------------------------------+----------+-----------------------+--------+
 | codigo |              titulo              | autor_id |       editorial       | precio |
@@ -30,7 +37,9 @@ sqlite> SELECT * FROM libro WHERE titulo REGEXP '^[AEIOUaeiou]';
 | 24     | Anna Karenina                    | 26       | The Russian Messenger | 23.99  |
 +--------+----------------------------------+----------+-----------------------+--------+
 sqlite>
--- Libros cuyo autor tiene al menos una vocal repetida.
+```
+### Libros cuyo autor tiene al menos una vocal repetida.
+```sql
 sqlite> SELECT l.* FROM libro AS l
    ...> JOIN autor AS a ON l.autor_id = a.id
    ...> WHERE a.nombre REGEXP '([AEIOUaeiou]){2,}';
@@ -40,12 +49,14 @@ sqlite> SELECT l.* FROM libro AS l
 | 5      | Brave New World | 3        | Chatto & Windus | 17.99  |
 +--------+-----------------+----------+-----------------+--------+
 sqlite>
-
--- Libros con precios que tienen dos dígitos decimales exactos.
+```
+### Libros con precios que tienen dos dígitos decimales exactos.
+```sql
 sqlite> SELECT * FROM libro WHERE precio REGEXP '^[0-9]+\\.[0-9]{2}$';
 sqlite>
--- Libros cuyos títulos tienen al menos tres palabras.
-SELECT * FROM libro WHERE titulo REGEXP '^([^ ]+ ){2}[^ ]+';
+```
+### Libros cuyos títulos tienen al menos tres palabras.
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '^([^ ]+ ){2}[^ ]+';
 +--------+-----------------------------------+----------+---------------------------+--------+
 | codigo |              titulo               | autor_id |         editorial         | precio |
@@ -68,7 +79,10 @@ sqlite> SELECT * FROM libro WHERE titulo REGEXP '^([^ ]+ ){2}[^ ]+';
 | 27     | The Wind in the Willows           | 29       | Methuen & Co.             | 17.5   |
 | 28     | War and Peace                     | 26       | The Russian Messenger     | 33.25  |
 | 29     | Crime and Punishment              | 30       | The Russian Messenger     | 19.99  |
-+--------+-----------------------------------+----------+---------------------------+--------+-- Obtener todos los autores cuyo nombre empieza con la letra "A":
++--------+-----------------------------------+----------+---------------------------+--------+
+```
+### Obtener todos los autores cuyo nombre empieza con la letra "A":
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '^A';
 +----+-----------------+
 | id |     nombre      |
@@ -76,14 +90,19 @@ sqlite> SELECT * FROM autor WHERE nombre REGEXP '^A';
 | 5  | Agatha Christie |
 +----+-----------------+
 sqlite>
-
--- Seleccionar los libros cuyo título contiene la palabra "SQL":
+```
+### Seleccionar los libros cuyo título contiene la palabra "SQL":
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP 'SQL';
 sqlite>
--- Obtener todos los autores cuyo nombre termina con "ez":
+```
+### Obtener todos los autores cuyo nombre termina con "ez":
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP 'ez$';
 sqlite>
--- Obtener todos los autores cuyo nombre tiene al menos 5 caracteres:
+```
+### Obtener todos los autores cuyo nombre tiene al menos 5 caracteres:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '^.{5,}$';
 +----+-----------------+
 | id |     nombre      |
@@ -95,7 +114,9 @@ sqlite> SELECT * FROM autor WHERE nombre REGEXP '^.{5,}$';
 | 5  | Agatha Christie |
 +----+-----------------+
 sqlite>
--- Seleccionar los libros cuya editorial es diferente de "EditorialX":
+```
+### Seleccionar los libros cuya editorial es diferente de "EditorialX":
+```sql
 sqlite> SELECT * FROM libro WHERE editorial NOT REGEXP '^EditorialX$';
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
 | codigo |              titulo               | autor_id |                  editorial                  | precio |
@@ -131,7 +152,9 @@ sqlite> SELECT * FROM libro WHERE editorial NOT REGEXP '^EditorialX$';
 | 29     | Crime and Punishment              | 30       | The Russian Messenger                       | 19.99  |
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
 sqlite>
--- Obtener todos los autores cuyo nombre contiene al menos una vocal:
+```
+### Obtener todos los autores cuyo nombre contiene al menos una vocal:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '[AEIOUaeiou]';
 +----+-----------------+
 | id |     nombre      |
@@ -143,7 +166,9 @@ sqlite> SELECT * FROM autor WHERE nombre REGEXP '[AEIOUaeiou]';
 | 5  | Agatha Christie |
 +----+-----------------+
 sqlite>
--- Seleccionar los libros cuyo título comienza con una letra mayúscula:
+```
+### Seleccionar los libros cuyo título comienza con una letra mayúscula:
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '^[A-Z]';
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
 | codigo |              titulo               | autor_id |                  editorial                  | precio |
@@ -178,7 +203,9 @@ sqlite> SELECT * FROM libro WHERE titulo REGEXP '^[A-Z]';
 | 28     | War and Peace                     | 26       | The Russian Messenger                       | 33.25  |
 | 29     | Crime and Punishment              | 30       | The Russian Messenger                       | 19.99  |
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
--- Obtener todos los autores cuyo nombre no contiene la letra "r":
+```
+### Obtener todos los autores cuyo nombre no contiene la letra "r":
+```sql
 sqlite> SELECT * FROM autor WHERE nombre NOT REGEXP 'r';
 +----+--------------+
 | id |    nombre    |
@@ -188,7 +215,9 @@ sqlite> SELECT * FROM autor WHERE nombre NOT REGEXP 'r';
 | 4  | Jane Austen  |
 +----+--------------+
 sqlite>
--- Seleccionar los libros cuya editorial empieza con la letra "P":
+```
+### Seleccionar los libros cuya editorial empieza con la letra "P":
+```sql
 sqlite> SELECT * FROM libro WHERE editorial REGEXP '^P';
 +--------+---------------------------+----------+-----------+--------+
 | codigo |          titulo           | autor_id | editorial | precio |
@@ -196,23 +225,33 @@ sqlite> SELECT * FROM libro WHERE editorial REGEXP '^P';
 | 16     | The Count of Monte Cristo | 18       | Pétion    | 27.99  |
 +--------+---------------------------+----------+-----------+--------+
 sqlite>
--- Obtener todos los autores cuyo nombre tiene exactamente 6 caracteres:
+```
+### Obtener todos los autores cuyo nombre tiene exactamente 6 caracteres:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '^.{6}$';
 sqlite>
--- Seleccionar los libros cuyo título contiene al menos un número:
+```
+### Seleccionar los libros cuyo título contiene al menos un número:
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '[0-9]';
 sqlite>
--- Obtener todos los autores cuyo nombre inicia con una vocal:
+```
+### Obtener todos los autores cuyo nombre inicia con una vocal:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '^[AEIOUaeiou]';
 +----+-----------------+
 | id |     nombre      |
 +----+-----------------+
 | 5  | Agatha Christie |
 +----+-----------------+	
--- Obtener todos los autores cuyo nombre no contiene espacios en blanco:
+```
+### Obtener todos los autores cuyo nombre no contiene espacios en blanco:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre NOT REGEXP ' ';
 sqlite>
--- Seleccionar los libros cuyo título termina con una vocal:
+```
+### Seleccionar los libros cuyo título termina con una vocal:
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '[AEIOUaeiou]$';
 +--------+-------------------------------+----------+---------------------------+--------+
 | codigo |            titulo             | autor_id |         editorial         | precio |
@@ -227,10 +266,14 @@ sqlite> SELECT * FROM libro WHERE titulo REGEXP '[AEIOUaeiou]$';
 | 24     | Anna Karenina                 | 26       | The Russian Messenger     | 23.99  |
 | 28     | War and Peace                 | 26       | The Russian Messenger     | 33.25  |
 +--------+-------------------------------+----------+---------------------------+--------+
--- Obtener todos los autores cuyo nombre contiene la secuencia "er":
+```
+### Obtener todos los autores cuyo nombre contiene la secuencia "er":
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP 'er';
 sqlite>
--- Seleccionar los libros cuyo título empieza con la palabra "The":
+```
+### Seleccionar los libros cuyo título empieza con la palabra "The":
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '^The';
 +--------+-----------------------------------+----------+---------------------------+--------+
 | codigo |              titulo               | autor_id |         editorial         | precio |
@@ -254,7 +297,9 @@ sqlite> SELECT * FROM libro WHERE titulo REGEXP '^The';
 | 27     | The Wind in the Willows           | 29       | Methuen & Co.             | 17.5   |
 +--------+-----------------------------------+----------+---------------------------+--------+
 sqlite>
--- Obtener todos los autores cuyo nombre tiene al menos una letra mayúscula:
+```
+### Obtener todos los autores cuyo nombre tiene al menos una letra mayúscula:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '[A-Z]';
 +----+-----------------+
 | id |     nombre      |
@@ -265,7 +310,9 @@ sqlite> SELECT * FROM autor WHERE nombre REGEXP '[A-Z]';
 | 4  | Jane Austen     |
 | 5  | Agatha Christie |
 +----+-----------------+
--- Seleccionar los libros cuyo precio es un número decimal con exactamente dos decimales:
+```
+### Seleccionar los libros cuyo precio es un número decimal con exactamente dos decimales:
+```sql
 sqlite> SELECT * FROM libro WHERE precio REGEXP '^\d+\.\d{2}$';
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
 | codigo |              titulo               | autor_id |                  editorial                  | precio |
@@ -293,7 +340,9 @@ sqlite> SELECT * FROM libro WHERE precio REGEXP '^\d+\.\d{2}$';
 | 28     | War and Peace                     | 26       | The Russian Messenger                       | 33.25  |
 | 29     | Crime and Punishment              | 30       | The Russian Messenger                       | 19.99  |
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
--- Obtener todos los autores cuyo nombre no contiene números:
+```
+### Obtener todos los autores cuyo nombre no contiene números:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre NOT REGEXP '[0-9]';
 +----+-----------------+
 | id |     nombre      |
@@ -304,7 +353,9 @@ sqlite> SELECT * FROM autor WHERE nombre NOT REGEXP '[0-9]';
 | 4  | Jane Austen     |
 | 5  | Agatha Christie |
 +----+-----------------+
--- Seleccionar los libros cuyo título contiene al menos tres vocales:
+```
+### Seleccionar los libros cuyo título contiene al menos tres vocales:
+```sql
 sqlite> SELECT * FROM libro WHERE titulo REGEXP '([AEIOUaeiou].*){3,}';
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
 | codigo |              titulo               | autor_id |                  editorial                  | precio |
@@ -339,7 +390,9 @@ sqlite> SELECT * FROM libro WHERE titulo REGEXP '([AEIOUaeiou].*){3,}';
 | 29     | Crime and Punishment              | 30       | The Russian Messenger                       | 19.99  |
 +--------+-----------------------------------+----------+---------------------------------------------+--------+
 sqlite>
--- Obtener todos los autores cuyo nombre inicia con una consonante:
+```
+### Obtener todos los autores cuyo nombre inicia con una consonante:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '^[^AEIOUaeiou]';
 +----+---------------+
 | id |    nombre     |
@@ -349,7 +402,9 @@ sqlite> SELECT * FROM autor WHERE nombre REGEXP '^[^AEIOUaeiou]';
 | 3  | George Orwell |
 | 4  | Jane Austen   |
 +----+---------------+
--- Seleccionar los libros cuyo título no contiene la palabra "Science":
+```
+### Seleccionar los libros cuyo título no contiene la palabra "Science":
+```sql
 sqlite> SELECT titulo
    ...> FROM libro
    ...> WHERE titulo NOT REGEXP '\\bScience\\b';
@@ -386,11 +441,14 @@ sqlite> SELECT titulo
 | War and Peace                     |
 | Crime and Punishment              |
 +-----------------------------------+
--- Obtener todos los autores cuyo nombre tiene al menos una letra repetida consecutivamente:
+```
+### Obtener todos los autores cuyo nombre tiene al menos una letra repetida consecutivamente:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '([a-zA-Z])\\1';
 sqlite>
-
--- Obtener todos los autores cuyo nombre empieza con "M" o termina con "n":
+```
+### Obtener todos los autores cuyo nombre empieza con "M" o termina con "n":
+```sql
 sqlite> SELECT nombre
    ...> FROM autor
    ...> WHERE nombre REGEXP '^(M.*|.*n)$';
@@ -399,7 +457,9 @@ sqlite> SELECT nombre
 +-------------+
 | Jane Austen |
 +-------------+
--- Obtener todos los autores cuyo nombre no contiene caracteres especiales:
+```
+### Obtener todos los autores cuyo nombre no contiene caracteres especiales:
+```sql
 sqlite> SELECT * FROM autor WHERE nombre REGEXP '^[a-zA-Z ]*$';
 +----+-----------------+
 | id |     nombre      |
@@ -409,3 +469,4 @@ sqlite> SELECT * FROM autor WHERE nombre REGEXP '^[a-zA-Z ]*$';
 | 4  | Jane Austen     |
 | 5  | Agatha Christie |
 +----+-----------------+
+```
