@@ -347,7 +347,22 @@ mysql> SELECT p.departamento, COUNT(DISTINCT m.estudiante_id) AS total_estudiant
    - Si no lo está, insertarlo en `matriculas`; si ya lo está, lanzar un error.
 
 ```sql
+mysql> DELIMITER //
+mysql> CREATE PROCEDURE inscribir_estudiante(IN est_id INT, IN curso_id INT, IN fecha DATE)
+    -> BEGIN
+    ->   DECLARE existe INT;
+    ->   SELECT COUNT(*) INTO existe FROM matriculas WHERE estudiante_id = est_id AND curso_id = curso_id;
+    ->   IF existe = 0 THEN
+    ->     INSERT INTO matriculas(estudiante_id, curso_id, fecha)
+    ->     VALUES (est_id, curso_id, fecha);
+    ->   ELSE
+    ->     SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Estudiante ya est matriculado en este curso';
+    ->   END IF;
+    -> END;
+    -> //
+Query OK, 0 rows affected (0.005 sec)
 
+mysql> DELIMITER ;
 ```
 
 > El **ERROR es opcional, dado que esta parte no la hemos trabajado pero el if si**.
@@ -355,7 +370,8 @@ mysql> SELECT p.departamento, COUNT(DISTINCT m.estudiante_id) AS total_estudiant
 2. Ejecutar el procedimiento para inscribir al estudiante con ID 1 en el curso con ID 2.
 
 ```sql
-
+mysql> CALL inscribir_estudiante(1, 2, '2025-05-30');
+ERROR 1644 (45000): Estudiante ya est matriculado en este curso
 ```
 
 > Debe de salir el **ERROR** y en caso de no tener el error no hacer **nada**.
@@ -364,6 +380,8 @@ mysql> SELECT p.departamento, COUNT(DISTINCT m.estudiante_id) AS total_estudiant
 
 
 ```sql
+mysql> DROP PROCEDURE IF EXISTS inscribir_estudiante;
+Query OK, 0 rows affected (0.006 sec)
 
 ```
 
