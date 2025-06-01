@@ -514,7 +514,8 @@ mysql> SHOW index from matriculas;
 4. Eliminar ambos índices.
 
 ```sql
-drop index 
+drop index idx_ids ON matriuclas;
+DROP INDEX idx_fecha ON matriculas;
 ```
 
 ---
